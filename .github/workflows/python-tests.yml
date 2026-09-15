@@ -35,3 +35,11 @@ jobs:
         coverage run -m unittest test_currency_converter.py
         coverage report
         coverage xml
+    
+    # ЭТО НУЖНО ДОБАВИТЬ
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v5
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./coverage.xml
+        fail_ci_if_error: false
